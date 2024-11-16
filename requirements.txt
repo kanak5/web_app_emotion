@@ -3,5 +3,3 @@ uvicorn
 joblib
 nltk
 scikit-learn
-punkt 
-stopwords
