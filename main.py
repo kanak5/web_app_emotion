@@ -22,7 +22,9 @@ def preprocess_text(text):
     import string
     nltk.download('wordnet')
     nltk.download("stopwords")
-    nltk.download("WordNetLemmatizer")
+    nltk.download('punkt')
+
+    
 
     # Cleaning text
     text = text.lower()
