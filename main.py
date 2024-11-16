@@ -17,6 +17,8 @@ class InputText(BaseModel):
 def preprocess_text(text):
     import re
     import nltk
+    from nltk.corpus import stopwords
+    from nltk.stem import WordNetLemmatizer
     import string
     nltk.download("stopwords")
     nltk.download("WordNetLemmatizer")
