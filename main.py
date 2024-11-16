@@ -16,9 +16,10 @@ class InputText(BaseModel):
 # Define a text cleaning and processing function
 def preprocess_text(text):
     import re
-    from nltk.corpus import stopwords
-    from nltk.stem import WordNetLemmatizer
+    import nltk
     import string
+    nltk.download("stopwords")
+    nltk.download("WordNetLemmatizer")
 
     # Cleaning text
     text = text.lower()
