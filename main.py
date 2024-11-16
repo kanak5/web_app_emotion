@@ -20,6 +20,7 @@ def preprocess_text(text):
     from nltk.corpus import stopwords
     from nltk.stem import WordNetLemmatizer
     import string
+    nltk.download('wordnet')
     nltk.download("stopwords")
     nltk.download("WordNetLemmatizer")
 
