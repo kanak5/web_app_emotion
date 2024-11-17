@@ -1,9 +1,20 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import joblib
 
 # Initialize the FastAPI app
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins, use ["http://localhost:3000"] for React app only
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
+
+class TextRequest(BaseModel):
+    text: str
 
 # Load the trained model and vectorizer
 vectorizer = joblib.load('vectorizer.pkl')
@@ -52,6 +63,7 @@ def predict_emotion(input_data: InputText):
 
     # Predict the emotion
     predicted_label = Classifier.predict(vectorized_text)[0]
+    print(f"Raw model output: {predicted_label}")
     label_mapping = {0: 'negative', 1: 'neutral', 2: 'positive'}
     predicted_emotion = label_mapping[predicted_label]
     print(predict_emotion)
